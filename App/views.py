@@ -7,6 +7,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from Brain.GooglePalm import text_to_info
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
 
 # @method_decorator(login_required(login_url='admin/'), name='dispatch')
 
@@ -22,8 +24,10 @@ def getAnswer(request):
         prompt = request.POST.get('prompt')
         answer = text_to_info(prompt)
         print(answer)
-        return HttpResponse(answer)
+        return JsonResponse({'answer': answer})
     else:
-        return HttpResponse("{'error': 'Invalid Request'}")
+        return JsonResponse({'error': 'Request is not valid'})
+
+
 
 
