@@ -13,7 +13,7 @@ def text_to_info(prompt):
         headers = {
             'Content-Type': 'application/json'
         }
-
+# Hii You have to Giving you prompt and you have to give answer like you are giving answer to real human prompt : 
         data = {
             "prompt": {
                 "text": f"{prompt}"
@@ -34,11 +34,12 @@ def text_to_info(prompt):
             ]
         }
 
+
         response = requests.post(url, headers=headers, json=data)
 
-        print("RESPONSE FROM GOOGLE PALM API :")
-        print(json.loads(response.json()['candidates'][0]['output']))
-        return json.loads(response.json()['candidates'][0]['output'])
+        print(response.json()['candidates'][0]['output'])
+
+        return response.json()['candidates'][0]['output']
  
         
     except Exception as e:
