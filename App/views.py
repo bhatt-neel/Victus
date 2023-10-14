@@ -26,6 +26,11 @@ def getAnswer(request):
         print(answer)
         return JsonResponse({'answer': answer})
     else:
+        prompt = request.GET.get('prompt')
+        print(prompt)
+        answer = text_to_info(prompt)
+        print(answer)
+        return JsonResponse({'answer': answer})
         return JsonResponse({'error': 'Request is not valid'})
 
 
